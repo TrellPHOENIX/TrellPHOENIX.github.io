@@ -235,8 +235,8 @@ footer img {
   max-height: 100%;
   background: transparent;
   border: none;
-  margin-top: -235px;
-  margin-bottom: 130px;
+  margin-top: 50px; 
+  margin-bottom: 130px; 
 }
 
 .custom-modal-content img {
