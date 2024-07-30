@@ -259,14 +259,14 @@ footer img {
 
 .custom-close-btn {
   position: absolute;
-  top: 0px;
+  top: 50px;
   right: 10px;
   border: none;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 20px;
-  background-color: white;
+  opacity: 0; /* Make the button invisible */
+  pointer-events: painted; /* Prevent any interaction with the button */
 }
 
 
