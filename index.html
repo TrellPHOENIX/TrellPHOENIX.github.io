@@ -49,7 +49,7 @@
                 <p class="align-items-center text-center pb-1">
                     <span class="label">Маршрут:</span> 
                     <span class="value w-700 fs-14">
-                        <img src="img/bus.png" alt="bus icon" class="bus-icon" />
+                        <img src="img/bus.png" alt="bus icon" class="bus-icon transport-icon" id="transportIcon" />
                         <span id="routeNumber">00</span>
                         <span class="badge-custome-two badge mx-2 fs-14" id="ticketCode">009FJ00</span>
                     </span>
@@ -60,32 +60,26 @@
             </div>
         </div>
     </div>
-</div>
 
-
-
-    <!-- Custom Modal for Ticket Details -->
-    <div class="custom-modal-overlay" id="customModal">
-        <div class="custom-modal-content">
-            <button class="custom-close-btn" id="closeCustomModal">&times;</button>
-            <img src="img/ticket_empty.png" alt="Ticket Image">
-            <div class="custom-text-overlay">
-                <p class="label" style="top: -8px; left: 0px; position: relative;">Маршрут:</p>
-                <p class="value" style="top: 30px; left: 10px; position: relative;">
-                    <img src="img/bus.png" alt="bus icon" class="bus-icon" style="top: -42px; left: -8px; position: relative;">
-                    <span class="fw-700 color-fb" id="modalRouteNumber" style="top: -39px; left: -18px; position: relative;">00</span>
-                    <span class="badge-custome-three badge fs-14" id="modalTicketCode" style="top: -42px; left: -8px; position: relative;">009FJ00</span>
-                </p>
-                <p class="label" style="top: 3px; left: 0px; position: relative;">Время:</p>
-                <p class="value fw-700" id="modalTicketTime" style="top: 2px; left: -1px; position: relative;">00.00.24 00:00</p>
-                <p class="label" style="top: 14px; left: 1px; position: relative;">Код проверки:</p>
-                <p class="value fw-700" id="modalVerificationCodeDisplay" style="top: 14px; left: 0px; position: relative; font-size: 30px !important;">
-                    P9Q3HFLVS
-                </p>
-            </div>
+<!-- Custom Modal for Ticket Details -->
+<div class="custom-modal-overlay" id="customModal">
+    <div class="custom-modal-content">
+        <button class="custom-close-btn" id="closeCustomModal">&times;</button>
+        <img src="img/ticket_empty.png" alt="Ticket Image">
+        <div class="custom-text-overlay">
+            <p class="label">Маршрут:</p>
+            <p class="value">
+                <img src="img/bus.png" alt="bus icon" class="bus-icon" id="modalTransportIcon">
+                <span class="fw-700 color-fb" id="modalRouteNumber">00</span>
+                <span class="badge-custome-three badge fs-14" id="modalTicketCode">009FJ00</span>
+            </p>
+            <p class="label">Время:</p>
+            <p class="value fw-700" id="modalTicketTime">00.00.24 00:00</p>
+            <p class="label">Код проверки:</p>
+            <p class="value fw-700" id="modalVerificationCodeDisplay">P9Q3HFLVS</p>
         </div>
     </div>
-
+</div>
 
 
     <!-- Modal for Adding Ticket -->
@@ -98,6 +92,15 @@
                 </div>
                 <div class="modal-body">
                     <form id="ticketForm">
+                        <div class="mb-3">
+                            <label for="transportType" class="form-label">Тип транспорта</label>
+                            <div>
+                                <input type="radio" id="bus" name="transportType" value="bus" checked>
+                                <label for="bus">Автобус</label>
+                                <input type="radio" id="trolleybus" name="transportType" value="trolleybus">
+                                <label for="trolleybus">Троллейбус</label>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="ticketNumber" class="form-label">Номер транспорта</label>
                             <input type="text" class="form-control" id="ticketNumber" required>
@@ -145,6 +148,7 @@
             event.preventDefault();
     
             // Get form values
+            var transportType = document.querySelector('input[name="transportType"]:checked').value;
             var ticketNumber = document.getElementById('ticketNumber').value;
             var route = document.getElementById('route').value;
             var time = document.getElementById('time').value;
@@ -173,6 +177,13 @@
             document.getElementById('modalTicketTime').textContent = formattedDateTime;
             document.getElementById('modalVerificationCodeDisplay').textContent = verificationCode;
     
+            // Update transport text and icons
+            var transportText = transportType === 'bus' ? 'Автобус' : 'Троллейбус';
+            document.getElementById('text_01').textContent = transportText;
+            var transportIcon = transportType === 'bus' ? 'img/bus.png' : 'img/trolleybus.png';
+            document.getElementById('transportIcon').src = transportIcon;
+            document.getElementById('modalTransportIcon').src = transportIcon;
+    
             // Close modal
             var myModal = bootstrap.Modal.getInstance(document.getElementById('addTicketModal'));
             myModal.hide();
@@ -200,22 +211,20 @@
         });
     </script>
 
-<script>
-    document.getElementById('openCustomModal').addEventListener('click', () => {
-        document.getElementById('customModal').style.display = 'flex';
-    });
+    <script>
+        document.getElementById('openCustomModal').addEventListener('click', () => {
+            document.getElementById('customModal').style.display = 'flex';
+        });
 
-    document.getElementById('closeCustomModal').addEventListener('click', () => {
-        document.getElementById('customModal').style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === document.getElementById('customModal')) {
+        document.getElementById('closeCustomModal').addEventListener('click', () => {
             document.getElementById('customModal').style.display = 'none';
-        }
-    });
-</script>
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === document.getElementById('customModal')) {
+                document.getElementById('customModal').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
-
-
