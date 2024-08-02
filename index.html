@@ -61,26 +61,27 @@
         </div>
     </div>
 
-<!-- Custom Modal for Ticket Details -->
-<div class="custom-modal-overlay" id="customModal">
-    <div class="custom-modal-content">
-        <button class="custom-close-btn" id="closeCustomModal">&times;</button>
-        <img src="img/ticket_empty.png" alt="Ticket Image">
-        <div class="custom-text-overlay">
-            <p class="label">Маршрут:</p>
-            <p class="value">
-                <img src="img/bus.png" alt="bus icon" class="bus-icon" id="modalTransportIcon">
-                <span class="fw-700 color-fb" id="modalRouteNumber">00</span>
-                <span class="badge-custome-three badge fs-14" id="modalTicketCode">009FJ00</span>
-            </p>
-            <p class="label">Время:</p>
-            <p class="value fw-700" id="modalTicketTime">00.00.24 00:00</p>
-            <p class="label">Код проверки:</p>
-            <p class="value fw-700" id="modalVerificationCodeDisplay">P9Q3HFLVS</p>
+    <!-- Custom Modal for Ticket Details -->
+    <div class="custom-modal-overlay" id="customModal">
+        <div class="custom-modal-content">
+            <button class="custom-close-btn" id="closeCustomModal">&times;</button>
+            <img src="img/ticket_empty.png" alt="Ticket Image">
+            <div class="custom-text-overlay">
+                <p class="label" style="top: -8px; left: 0px; position: relative;">Маршрут:</p>
+                <p class="value" style="top: 30px; left: 10px; position: relative;">
+                    <img src="img/bus.png" alt="bus icon" class="bus-icon" id="modalTransportIcon" style="top: -42px; left: -8px; position: relative;">
+                    <span class="fw-700 color-fb" id="modalRouteNumber" style="top: -39px; left: -18px; position: relative;">00</span>
+                    <span class="badge-custome-three badge fs-14" id="modalTicketCode" style="top: -42px; left: -8px; position: relative;">009FJ00</span>
+                </p>
+                <p class="label" style="top: 3px; left: 0px; position: relative;">Время:</p>
+                <p class="value fw-700" id="modalTicketTime" style="top: 2px; left: -1px; position: relative;">00.00.24 00:00</p>
+                <p class="label" style="top: 14px; left: 1px; position: relative;">Код проверки:</p>
+                <p class="value fw-700" id="modalVerificationCodeDisplay" style="top: 14px; left: 0px; position: relative; font-size: 30px !important;">
+                    P9Q3HFLVS
+                </p>
+            </div>
         </div>
     </div>
-</div>
-
 
     <!-- Modal for Adding Ticket -->
     <div class="modal fade" id="addTicketModal" tabindex="-1" aria-labelledby="addTicketModalLabel" aria-hidden="true">
