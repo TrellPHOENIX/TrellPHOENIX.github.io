@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	font-family: 'Montserrat' !important;
+	background-color: #f3f4f9 !important;
+}
+
+p {
+	margin: 0 !important;
+}
+
+header {
+	background-color: #fff !important;
+}
+
+.btn-group-toggle {
+	display: flex;
+	justify-content: center;
+	gap: 0px;
+	background-color: #e3e4e9;
+	border-radius: 8px !important;
+}
+
+#text-main {
+	font-size: 15px;
+	color: black !important;
+	font-weight: 600;
+}
+
+#btn_one {
+	border-top: 3px solid #e3e4e9 !important;
+	border-bottom: 3px solid #e3e4e9 !important;
+	border-left: 3px solid #e3e4e9 !important;
+	border-right: 3px solid #e3e4e9 !important;
+	border-radius: 8px !important;
+	box-shadow: 5px 0px 5px -5px rgba(34, 60, 80, 0.6);
+	text-transform: none !important;
+	font-weight: 600 !important;
+	font-size: 13px;
+	color: black;
+	background-color: white;
+	padding: 0.8rem 4.3rem;
+	cursor: pointer;
+	text-align: center;
+}
+
+#btn_two {
+	border-top: 3px solid #e3e4e9 !important;
+	border-bottom: 3px solid #e3e4e9 !important;
+	border-right: 3px solid #e3e4e9 !important;
+	border-radius: 0px 8px 8px 0px !important;
+	text-transform: none !important;
+	font-weight: 600 !important;
+	font-size: 13px;
+	color: #585767;
+	background-color: #e3e4e9;
+	padding: 0.8rem 4.3rem;
+	cursor: pointer;
+	text-align: center;
+	box-shadow: 5px 0px 5px -7px rgba(34, 60, 80, 0.6) inset;
+}
+
+.badge-custome > .badge {
+	color: black !important;
+	background-color: white !important;
+	border-radius: 20px !important;
+	font-size: 12px !important;
+}
+
+.card {
+	position: relative;
+	width: 360px !important;
+	padding: 0 20px 0 60px !important;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: none !important;
+	margin: 3px 0 20px 0;
+	border-radius: 8px !important;
+	right: 7px;
+	--bs-card-border-color: none !important;
+}
+
+.card .yellow-strip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 100%;
+	background-color: #ffd700;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#text_01 {
+	font-size: 13px !important;
+	font-weight: 700;
+}
+
+#text_02 {
+	font-size: 10px !important;
+	color: #313134;
+	position: relative;
+	bottom: 7.5px;
+}
+
+.fs-13 {
+	font-size: 13px !important;
+}
+
+.fs-14 {
+	font-size: 14px !important;
+}
+
+.card .yellow-strip img {
+	max-width: 100px;
+	max-height: 65px;
+	object-fit: contain;
+}
+
+.fw-700 {
+	font-weight: 700;
+}
+
+.card-content p {
+	display: flex;
+	align-items: baseline;
+	font-size: 12px !important;
+	margin: 0px 0 !important;
+	font-weight: 500;
+}
+
+.card-content .label {
+	min-width: 130px;
+	text-align: left;
+}
+
+.card-content .value {
+	flex: 1;
+	text-align: left;
+}
+
+.w-700 {
+	font-weight: 700 !important;
+}
+
+.value {
+	display: flex;
+	align-items: center;
+}
+
+.bus-icon {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+}
+
+.qr-icon {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+}
+
+.badge-custome-two {
+	background-color: #f2f1f6;
+	height: 15px;
+	color: black !important;
+	padding: 2px 5px;
+	border-radius: 5px !important;
+	margin-left: 5px;
+	font-weight: 500 !important;
+	font-size: 10px;
+}
+
+.badge-custome-three {
+	background-color: #ffe64d;
+	height: 15px;
+	color: black !important;
+	border-radius: 10px !important;
+	margin-left: -10px;
+	font-weight: 700 !important;
+	font-size: 24px !important;
+	padding: 19px 12px !important;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+footer img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.color-fb {
+	color: #021100 !important;
+}
+
+.custom-modal-overlay {
+	display: none;
+	position: fixed;
+	overflow-y: scroll !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	/* background-color: rgb(59 52 129 / 50%); */
+	justify-content: center;
+	align-items: center;
+	z-index: 1050;
+}
+
+.custom-modal-content {
+	animation: none;
+}
+
+.animate__fadeInUpBig {
+	animation-name: fadeInUpBig;
+}
+
+.animate__fadeOutDownBig {
+	animation-name: fadeOutDownBig;
+}
+
+.animate__animated {
+	background-color: none !important;
+}
+
+.animate__fadeInUpBig {
+	background-color: none !important;
+}
+
+.animate__faster {
+	background-color: none !important;
+}
+
+.custom-modal-content {
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	background: transparent;
+	border: none;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	background-color: none !important;
+}
+
+.custom-modal-content img {
+	width: 100%;
+	height: auto;
+}
+
+.custom-text-overlay {
+	position: absolute;
+	top: 386px;
+	left: 195px;
+	transform: translate(-50%, -50%);
+	color: black;
+	padding: 15px;
+	border-radius: 8px;
+	text-align: center;
+	width: 90%;
+	font-family: 'Montserrat' !important;
+}
+
+.custom-close-btn {
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	border: none;
+	padding: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+	opacity: 0; /* Make the button invisible */
+	pointer-events: painted; /* Prevent any interaction with the button */
+	width: 300px;
+	height: 300px;
+}
+
+.custom-text-overlay p {
+	margin: 0;
+	font-size: 32px;
+	line-height: 1.5;
+}
+
+.custom-text-overlay .label {
+	font-weight: 500 !important;
+	font-size: 14px;
+	color: #9e800b !important;
+}
+
+.custom-text-overlay .value {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.custom-text-overlay .value img {
+	vertical-align: middle;
+	width: 28px;
+	height: 30px;
+	margin-right: 5px;
+}
+
+.custom-text-overlay .fs-14 {
+	font-size: 14px;
+}
+
+.custom-text-overlay .bus-icon {
+	width: 20px;
+	height: 20px;
+}
+
+.custom-text-overlay .qr-icon {
+	width: 20px;
+	height: 20px;
+}
+
+@media (min-width: 768px) {
+	body {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	body {
+		display: block;
+	}
+}
+
+#content {
+	display: none;
+}
+.error {
+	display: none;
+	color: red;
+}

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="stylesheet"
+			href="lib/bootstrap-5.2.3-dist/css/bootstrap.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="lib/bootstrap-5.2.3-dist/css/bootstrap.min.css.map"
+		/>
+		<link rel="stylesheet" href="lib/material-master/css/material.min.css" />
+		<link rel="stylesheet" href="lib/mdl/material.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+	</head>
+	<body>
+		<div id="loginContainer" class="container">
+			<div class="row justify-content-center" style="height: 100vh">
+				<div class="col-md-4">
+					<h2 class="text-center">Вход</h2>
+					<form id="loginForm">
+						<div class="mb-3">
+							<label for="password" class="form-label">Введите пароль:</label>
+							<input
+								type="password"
+								class="form-control"
+								id="password"
+								required
+							/>
+						</div>
+						<button type="submit" class="btn btn-primary w-100">Войти</button>
+						<p class="error text-center mt-2" id="errorMessage">
+							Пароль неверный. Попробуйте снова.
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="content">
+			<header class="pb-3 pt-2 mb-2">
+				<div class="container px-2">
+					<div class="d-flex flex-column align-items-center">
+						<div class="d-flex align-items-center w-100">
+							<a href="#" class="d-flex align-items-center">
+								<img
+									src="img/arrow_left.png"
+									alt="Arrow"
+									style="width: 18px; height: 18px"
+								/>
+							</a>
+							<ul class="nav mb-0 mx-auto d-flex align-items-center">
+								<li class="nav-item">
+									<a
+										href="#"
+										class="nav-link px-2 text-secondary"
+										id="text-main"
+										>Мои билеты</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div
+							class="btn-group-toggle"
+							role="group"
+							aria-label="Toggle buttons"
+						>
+							<a href="#" class="btn" id="btn_one">Транспорт</a>
+							<a href="#" class="btn" id="btn_two">Другое</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div
+				class="container"
+				style="padding-bottom: 35rem; margin-bottom: 35rem"
+			>
+				<div class="badge-custome d-flex justify-content-center">
+					<span class="badge px-3 text-bg-primary mt-4 mb-2">Сегодня</span>
+				</div>
+				<div id="openCustomModal">
+					<div class="card" id="ticketCard">
+						<div class="yellow-strip">
+							<img src="img/onay.png" alt="Image in Yellow Strip" />
+						</div>
+						<div class="card-content py-2">
+							<p id="text_01">Автобус</p>
+							<p class="mb-2" id="text_02">г. Алматы, электронный билет</p>
+							<p class="align-items-center text-center pb-1">
+								<span class="label">Маршрут:</span>
+								<span class="value w-700 fs-14">
+									<img
+										src="img/bus.png"
+										alt="bus icon"
+										class="bus-icon transport-icon"
+										id="transportIcon"
+									/>
+									<span id="routeNumber">00</span>
+									<span
+										class="badge-custome-two badge mx-2 fs-14"
+										id="ticketCode"
+										>009FJ00</span
+									>
+								</span>
+							</p>
+							<p class="pb-1">
+								<span class="label">Время:</span>
+								<span class="value w-700 fs-14" id="ticketTime"
+									>01.01.24 21:00</span
+								>
+							</p>
+							<p class="pb-1">
+								<span class="label">Цена:</span>
+								<span class="value w-700 fs-14" id="ticketPrice">120 ₸</span>
+							</p>
+							<p class="pb-1">
+								<span class="label">Код проверки:</span>
+								<span class="value w-700 fs-14" id="verificationCodeDisplay"
+									>3DF19
+									<img src="img/qr.png" alt="bus icon" class="qr-icon mx-1"
+								/></span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Custom Modal for Ticket Details -->
+				<div class="custom-modal-overlay" id="customModal">
+					<div
+						class="custom-modal-content animate__animated animate__fadeInUpBig animate__faster"
+					>
+						<button class="custom-close-btn" id="closeCustomModal">
+							&times;
+						</button>
+						<img src="img/ticket_empty.png" alt="Ticket Image" />
+						<div class="custom-text-overlay">
+							<p class="label" style="top: -8px; left: 0px; position: relative">
+								Маршрут:
+							</p>
+							<p
+								class="value"
+								style="top: 30px; left: 10px; position: relative"
+							>
+								<img
+									src="img/bus.png"
+									alt="bus icon"
+									class="bus-icon"
+									id="modalTransportIcon"
+									style="top: -42px; left: -8px; position: relative"
+								/>
+								<span
+									class="fw-700 color-fb"
+									id="modalRouteNumber"
+									style="top: -39px; left: -18px; position: relative"
+									>00</span
+								>
+								<span
+									class="badge-custome-three badge fs-14"
+									id="modalTicketCode"
+									style="top: -42px; left: -8px; position: relative"
+									>009FJ00</span
+								>
+							</p>
+							<p class="label" style="top: 3px; left: 0px; position: relative">
+								Время:
+							</p>
+							<p
+								class="value fw-700"
+								id="modalTicketTime"
+								style="top: 2px; left: -1px; position: relative"
+							>
+								00.00.24 00:00
+							</p>
+							<p class="label" style="top: 14px; left: 1px; position: relative">
+								Код проверки:
+							</p>
+							<p
+								class="value fw-700"
+								id="modalVerificationCodeDisplay"
+								style="
+									top: 14px;
+									left: 0px;
+									position: relative;
+									font-size: 30px !important;
+								"
+							>
+								3DF19
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal for Adding Ticket -->
+			<div
+				class="modal fade"
+				id="addTicketModal"
+				tabindex="-1"
+				aria-labelledby="addTicketModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="addTicketModalLabel">
+								Добавить билет
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<form id="ticketForm">
+								<div class="mb-3">
+									<label for="transportType" class="form-label"
+										>Тип транспорта</label
+									>
+									<div>
+										<input
+											type="radio"
+											id="bus"
+											name="transportType"
+											value="bus"
+											checked
+										/>
+										<label for="bus">Автобус</label>
+										<input
+											type="radio"
+											id="trolleybus"
+											name="transportType"
+											value="trolleybus"
+										/>
+										<label for="trolleybus">Троллейбус</label>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label for="ticketNumber" class="form-label"
+										>Номер транспорта</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="ticketNumber"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="route" class="form-label">Маршрут</label>
+									<input type="text" class="form-control" id="route" required />
+								</div>
+								<div class="mb-3">
+									<label for="time" class="form-label">Время</label>
+									<input
+										type="datetime-local"
+										class="form-control"
+										id="time"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="verificationCode" class="form-label"
+										>Код проверки</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="verificationCode"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="price" class="form-label">Цена</label>
+									<input
+										type="number"
+										class="form-control"
+										id="price"
+										value="120"
+										required
+									/>
+								</div>
+								<button type="submit" class="btn btn-primary">Добавить</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<img src="img/footer.png" alt="Footer Image" />
+			</footer>
+		</div>
+		<script src="js/script.js"></script>
+		<script src="lib/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+		<script src="lib/jquery/jquery-3.7.1.min.js"></script>
+		<script src="lib/material-master/js/material.min.js"></script>
+		<script src="lib/mdl/material.min.js"></script>
+		<script>
+			document
+				.getElementById('btn_one')
+				.addEventListener('click', function (event) {
+					event.preventDefault()
+					var verificationCode = generateVerificationCode() // Generate verification code
+					document.getElementById('verificationCode').value = verificationCode // Set the code in the input field
+					var myModal = new bootstrap.Modal(
+						document.getElementById('addTicketModal')
+					)
+					myModal.show()
+				})
+
+			document
+				.getElementById('ticketForm')
+				.addEventListener('submit', function (event) {
+					event.preventDefault()
+
+					// Get form values
+					var transportType = document.querySelector(
+						'input[name="transportType"]:checked'
+					).value
+					var ticketNumber = document.getElementById('ticketNumber').value
+					var route = document.getElementById('route').value
+					var time = document.getElementById('time').value
+					var price = document.getElementById('price').value
+					var verificationCode =
+						document.getElementById('verificationCode').value
+
+					// Format date and time in format dd.mm.yy hh:mm
+					var dateObj = new Date(time)
+					var formattedDate =
+						('0' + dateObj.getDate()).slice(-2) +
+						'.' +
+						('0' + (dateObj.getMonth() + 1)).slice(-2) +
+						'.' +
+						dateObj.getFullYear().toString().slice(-2)
+					var formattedTime =
+						('0' + dateObj.getHours()).slice(-2) +
+						':' +
+						('0' + dateObj.getMinutes()).slice(-2)
+					var formattedDateTime = formattedDate + ' ' + formattedTime
+
+					// Update card content
+					document.getElementById('routeNumber').textContent = route
+					document.getElementById('ticketCode').textContent = ticketNumber
+					document.getElementById('ticketTime').textContent = formattedDateTime
+					document.getElementById('ticketPrice').textContent = price + ' ₸'
+					document.getElementById('verificationCodeDisplay').innerHTML =
+						verificationCode +
+						' <img src="img/qr.png" alt="bus icon" class="qr-icon mx-1" />'
+
+					// Update modal content
+					document.getElementById('modalRouteNumber').textContent = route
+					document.getElementById('modalTicketCode').textContent = ticketNumber
+					document.getElementById('modalTicketTime').textContent =
+						formattedDateTime
+					document.getElementById('modalVerificationCodeDisplay').textContent =
+						verificationCode
+
+					// Update transport text and icons
+					var transportText = transportType === 'bus' ? 'Автобус' : 'Троллейбус'
+					document.getElementById('text_01').textContent = transportText
+					var transportIcon =
+						transportType === 'bus' ? 'img/bus.png' : 'img/trolleybus.png'
+					document.getElementById('transportIcon').src = transportIcon
+					document.getElementById('modalTransportIcon').src = transportIcon
+
+					// Close modal
+					var myModal = bootstrap.Modal.getInstance(
+						document.getElementById('addTicketModal')
+					)
+					myModal.hide()
+
+					// Optionally clear form fields
+					document.getElementById('ticketForm').reset()
+				})
+
+			document
+				.getElementById('closeCustomModal')
+				.addEventListener('click', function () {
+					document.getElementById('customModal').style.display = 'none'
+				})
+
+			function generateVerificationCode() {
+				var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+				var digits = '0123456789'
+				var characters = letters + digits
+				var code = ''
+				var digitCount = 0
+
+				function hasTooManyRepeats(code, char) {
+					return code.slice(-2).includes(char)
+				}
+
+				while (code.length < 5) {
+					var char = characters.charAt(
+						Math.floor(Math.random() * characters.length)
+					)
+
+					if (digits.includes(char)) {
+						if (digitCount < 2 || code.length >= 4) {
+							code += char
+							digitCount++
+						}
+					} else if (!hasTooManyRepeats(code, char)) {
+						code += char
+					}
+				}
+
+				return code
+			}
+
+			// Show the custom modal (For demonstration purpose)
+			document
+				.getElementById('ticketCard')
+				.addEventListener('click', function () {
+					document.getElementById('customModal').style.display = 'block'
+				})
+		</script>
+	</body>
+</html>
