@@ -274,6 +274,19 @@
 									/>
 								</div>
 								<div class="mb-3">
+									<label for="codeLength" class="form-label"
+										>Длина кода проверки</label
+									>
+									<input
+										type="number"
+										class="form-control"
+										id="codeLength"
+										min="1"
+										value="9"
+										required
+									/>
+								</div>
+								<div class="mb-3">
 									<label for="verificationCode" class="form-label"
 										>Код проверки</label
 									>
@@ -281,9 +294,15 @@
 										type="text"
 										class="form-control"
 										id="verificationCode"
-										required
 									/>
 								</div>
+								<button
+									type="button"
+									class="btn btn-primary"
+									onclick="generateVerificationCode()"
+								>
+									Сгенерировать код
+								</button>
 								<div class="mb-3">
 									<label for="price" class="form-label">Цена</label>
 									<input
@@ -395,33 +414,33 @@
 				})
 
 			function generateVerificationCode() {
-				var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-				var digits = '0123456789'
-				var characters = letters + digits
-				var code = ''
-				var digitCount = 0
+				const codeLength =
+					parseInt(document.getElementById('codeLength').value) || 8
+				const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+				let verificationCode = ''
 
-				function hasTooManyRepeats(code, char) {
-					return code.slice(-2).includes(char)
+				for (let i = 0; i < codeLength; i++) {
+					const randomIndex = Math.floor(Math.random() * characters.length)
+					verificationCode += characters.charAt(randomIndex)
 				}
 
-				while (code.length < 5) {
-					var char = characters.charAt(
-						Math.floor(Math.random() * characters.length)
-					)
-
-					if (digits.includes(char)) {
-						if (digitCount < 2 || code.length >= 4) {
-							code += char
-							digitCount++
-						}
-					} else if (!hasTooManyRepeats(code, char)) {
-						code += char
-					}
-				}
-
-				return code
+				document.getElementById('verificationCode').value = verificationCode
 			}
+
+			document
+				.getElementById('addTicketModal')
+				.addEventListener('show.bs.modal', function () {
+					const codeLength = 5
+					const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+					let verificationCode = ''
+
+					for (let i = 0; i < codeLength; i++) {
+						const randomIndex = Math.floor(Math.random() * characters.length)
+						verificationCode += characters.charAt(randomIndex)
+					}
+
+					document.getElementById('verificationCode').value = verificationCode
+				})
 
 			// Show the custom modal (For demonstration purpose)
 			document
