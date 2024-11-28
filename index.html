@@ -51,7 +51,7 @@
 		</div>
 
 		<div id="content">
-			<header class="pb-3 pt-2 mb-2">
+			<header class="py-2">
 				<div class="container px-2">
 					<div class="d-flex flex-column align-items-center">
 						<div class="d-flex align-items-center w-100">
@@ -74,11 +74,11 @@
 							</ul>
 						</div>
 						<div
-							class="btn-group-toggle"
+							class="btn-group-toggle d-none"
 							role="group"
 							aria-label="Toggle buttons"
 						>
-							<a href="#" class="btn" id="btn_one">Транспорт</a>
+							<a href="#" class="btn" id="btn_one1">Транспорт</a>
 							<a href="#" class="btn" id="btn_two">Другое</a>
 						</div>
 					</div>
@@ -98,7 +98,7 @@
 						</div>
 						<div class="card-content py-2">
 							<p id="text_01">Автобус</p>
-							<p class="mb-2" id="text_02">г. Алматы, электронный билет</p>
+							<p class="mb-2" id="text_02">Алматы</p>
 							<p class="align-items-center text-center pb-1">
 								<span class="label">Маршрут:</span>
 								<span class="value w-700 fs-14">
@@ -135,6 +135,17 @@
 							</p>
 						</div>
 					</div>
+				</div>
+
+				<div class="d-flex justify-content-center" id="btn_one">
+					<span class="badge-custome-add px-3 my-2 d-flex align-items-center">
+						<img
+							src="img/add-ticket.png"
+							alt="Icon"
+							class="me-2 icon-inside-badge"
+						/>
+						Купить ещё
+					</span>
 				</div>
 
 				<!-- Custom Modal for Ticket Details -->
@@ -250,6 +261,16 @@
 									</div>
 								</div>
 								<div class="mb-3">
+									<label for="additionalNumber" class="form-label"
+										>Добавочный номер</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="additionalNumber"
+									/>
+								</div>
+								<div class="mb-3">
 									<label for="ticketNumber" class="form-label"
 										>Номер транспорта</label
 									>
@@ -320,7 +341,7 @@
 				</div>
 			</div>
 
-			<footer>
+			<footer class="d-none">
 				<img src="img/footer.png" alt="Footer Image" />
 			</footer>
 		</div>
@@ -352,6 +373,8 @@
 						'input[name="transportType"]:checked'
 					).value
 					var ticketNumber = document.getElementById('ticketNumber').value
+					var additionalNumber =
+						document.getElementById('additionalNumber').value // Получение добавочного номера
 					var route = document.getElementById('route').value
 					var time = document.getElementById('time').value
 					var price = document.getElementById('price').value
@@ -372,18 +395,31 @@
 						('0' + dateObj.getMinutes()).slice(-2)
 					var formattedDateTime = formattedDate + ' ' + formattedTime
 
+					// Format ticket code for card (full code with additional number if exists)
+					var fullTicketCode = formatFullTicketCode(
+						ticketNumber,
+						additionalNumber
+					)
+
 					// Update card content
 					document.getElementById('routeNumber').textContent = route
-					document.getElementById('ticketCode').textContent = ticketNumber
+					document.getElementById('ticketCode').textContent = fullTicketCode // Display full ticket code on card
 					document.getElementById('ticketTime').textContent = formattedDateTime
 					document.getElementById('ticketPrice').textContent = price + ' ₸'
 					document.getElementById('verificationCodeDisplay').innerHTML =
 						verificationCode +
-						' <img src="img/qr.png" alt="bus icon" class="qr-icon mx-1" />'
+						' <img src="img/qr.png" alt="QR код" class="qr-icon mx-1" />'
+
+					// Format ticket code for modal (with trimming to 10 chars)
+					var modalTicketCode = formatModalTicketCode(
+						ticketNumber,
+						additionalNumber
+					)
 
 					// Update modal content
 					document.getElementById('modalRouteNumber').textContent = route
-					document.getElementById('modalTicketCode').textContent = ticketNumber
+					document.getElementById('modalTicketCode').textContent =
+						modalTicketCode // Display trimmed ticket code in modal
 					document.getElementById('modalTicketTime').textContent =
 						formattedDateTime
 					document.getElementById('modalVerificationCodeDisplay').textContent =
@@ -448,6 +484,36 @@
 				.addEventListener('click', function () {
 					document.getElementById('customModal').style.display = 'block'
 				})
+
+			// Function to format ticket code with full code for card (no trimming)
+			function formatFullTicketCode(ticketNumber, additionalNumber) {
+				if (additionalNumber) {
+					return `(${additionalNumber})${ticketNumber}` // Display full code with additional number
+				} else {
+					return ticketNumber // Only ticket number if no additional number
+				}
+			}
+
+			// Function to format ticket code for modal with trimming to 10 chars
+			function formatModalTicketCode(ticketNumber, additionalNumber) {
+				let fullCode
+
+				if (additionalNumber) {
+					// Формируем строку с добавочным номером
+					fullCode = `(${additionalNumber})${ticketNumber}`
+				} else {
+					// Если добавочного номера нет
+					fullCode = ticketNumber
+				}
+
+				// Если длина строки превышает 10 символов
+				if (fullCode.length > 10) {
+					// Оставляем первые 10 символов и добавляем "..."
+					fullCode = fullCode.slice(0, 10) + '...'
+				}
+
+				return fullCode
+			}
 		</script>
 	</body>
 </html>

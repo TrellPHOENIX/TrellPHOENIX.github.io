@@ -35,7 +35,7 @@ header {
 }
 
 #btn_one {
-	border-top: 3px solid #e3e4e9 !important;
+	/* border-top: 3px solid #e3e4e9 !important;
 	border-bottom: 3px solid #e3e4e9 !important;
 	border-left: 3px solid #e3e4e9 !important;
 	border-right: 3px solid #e3e4e9 !important;
@@ -46,7 +46,7 @@ header {
 	font-size: 13px;
 	color: black;
 	background-color: white;
-	padding: 0.8rem 4.3rem;
+	padding: 0.8rem 4.3rem; */
 	cursor: pointer;
 	text-align: center;
 }
@@ -72,6 +72,23 @@ header {
 	background-color: white !important;
 	border-radius: 20px !important;
 	font-size: 12px !important;
+}
+
+.badge-custome-add {
+	color: black !important;
+	padding: 5px;
+	background-color: #f7db13 !important;
+	border-radius: 20px !important;
+	font-size: 12px !important;
+	font-weight: 500;
+	display: inline-flex; /* Для горизонтального выравнивания контента */
+	align-items: center; /* Центровка содержимого по вертикали */
+}
+
+.icon-inside-badge {
+	width: 16px; /* Настройте размер иконки */
+	height: 16px;
+	margin-right: 8px; /* Отступ между иконкой и текстом */
 }
 
 .card {
