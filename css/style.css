@@ -76,10 +76,10 @@ header {
 
 .badge-custome-add {
 	color: black !important;
-	padding: 5px;
+	padding: 8px 20px 8px 20px;
 	background-color: #f7db13 !important;
 	border-radius: 20px !important;
-	font-size: 12px !important;
+	font-size: 14px !important;
 	font-weight: 500;
 	display: inline-flex; /* Для горизонтального выравнивания контента */
 	align-items: center; /* Центровка содержимого по вертикали */
@@ -94,7 +94,7 @@ header {
 .card {
 	position: relative;
 	width: 360px !important;
-	padding: 0 20px 0 60px !important;
+	padding: 0 20px 0 55px !important;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	background-color: #fff;
@@ -109,7 +109,7 @@ header {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 40px;
+	width: 35px;
 	height: 100%;
 	background-color: #ffd700;
 	border-top-left-radius: 8px;
@@ -196,7 +196,7 @@ header {
 	border-radius: 5px !important;
 	margin-left: 5px;
 	font-weight: 500 !important;
-	font-size: 10px;
+	font-size: 14px !important;
 }
 
 .badge-custome-three {
