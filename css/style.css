@@ -126,7 +126,7 @@ header {
 
 #text_02 {
 	font-size: 10px !important;
-	color: #313134;
+	color: gray !important;
 	position: relative;
 	bottom: 7.5px;
 }
